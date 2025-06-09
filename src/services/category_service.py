@@ -7,7 +7,7 @@ def fetch_all_categories():
         return None
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM categories")
+    cursor.execute("SELECT * FROM categories ORDER BY id ASC")
     books = cursor.fetchall()
     cursor.close()
     return books
