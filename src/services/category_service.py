@@ -1,25 +1,25 @@
 from database.db import get_db_connection
 
 
-def fetch_all_books():
+def fetch_all_categories():
     conn = get_db_connection()
     if not conn:
         return None
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM books")
+    cursor.execute("SELECT * FROM categories")
     books = cursor.fetchall()
     cursor.close()
     return books
 
 
-def fetch_book_by_id(book_id):
+def fetch_category_by_id(categories_id):
     conn = get_db_connection()
     if not conn:
         return None
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM books WHERE id = %s", (book_id,))
+    cursor.execute("SELECT * FROM categories WHERE id = %s", (categories_id,))
     book = cursor.fetchone()
     cursor.close()
     return book
